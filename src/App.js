@@ -15,6 +15,7 @@ import MyProfilePage from './components/pages/MyProfile/MyProfilePage';
 import PaymentMethodPage from './components/pages/PaymentMethod/PaymentMethodPage';
 import ContactUsPage from './components/pages/ContactUs/ContactUsPage';
 import ParametersPage from './components/pages/Parameters/ParametersPage';
+import OrdersPage from './components/pages/Orders/OrdersPage';
 
 
 
@@ -45,6 +46,7 @@ const Layout = () => {
         <Route path="/paymentmethod" element={<PaymentMethodPage/>}/>
         <Route path="/contactus" element={<ContactUsPage/>}/>
         <Route path="/parameters" element={<ParametersPage/>}/>
+        <Route path="/orders" element={<OrdersPage/>}/>
 
       </Routes>
     </>

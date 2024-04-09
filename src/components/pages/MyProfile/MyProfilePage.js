@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MyProfilePage.css';
 
 const MyProfilePage = () => {
@@ -12,21 +12,6 @@ const MyProfilePage = () => {
   const [buildingType, setBuildingType] = useState('');
   const [deliveryInstructions, setDeliveryInstructions] = useState('');
 
-  // Fonction pour générer un code de parrainage aléatoire
-  const generateReferralCode = () => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-      code += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    setReferralCode(code);
-  };
-
-  // Utilisation de l'effet de montée pour générer le code de parrainage une seule fois lors du chargement initial
-  useEffect(() => {
-    generateReferralCode();
-  }, []);
-
   return (
     <div className="my-profile-page">
       <h2>Mon Profil</h2>
@@ -36,8 +21,7 @@ const MyProfilePage = () => {
           id="referralCode"
           type="text"
           value={referralCode}
-          readOnly // Empêche l'édition manuelle du code de parrainage
-          placeholder="Généré automatiquement"
+          onChange={(e) => setReferralCode(e.target.value)}
         />
 
         <label htmlFor="lastName">Nom *</label>
@@ -70,44 +54,42 @@ const MyProfilePage = () => {
           required
         />
 
-        <label htmlFor="country">Pays *</label>
-        <input
+        <label htmlFor="country">Pays</label>
+        <select
           id="country"
-          type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
-          placeholder="Entrez votre pays"
-          required
-        />
+          placeholder="Sélectionnez votre pays"
+        >
+          <option value="">Sélectionnez votre pays</option>
+          {/* Ajoutez ici la liste des pays du monde */}
+        </select>
 
-        <label htmlFor="city">Ville *</label>
+        <label htmlFor="city">Ville</label>
         <input
           id="city"
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           placeholder="Entrez votre ville"
-          required
         />
 
-        <label htmlFor="streetAddress">N° de voie, Rue *</label>
+        <label htmlFor="streetAddress">N° de voie, Rue</label>
         <input
           id="streetAddress"
           type="text"
           value={streetAddress}
           onChange={(e) => setStreetAddress(e.target.value)}
           placeholder="Entrez votre adresse"
-          required
         />
 
-        <label htmlFor="buildingType">Type de bâtiment *</label>
+        <label htmlFor="buildingType">Type de bâtiment</label>
         <input
           id="buildingType"
           type="text"
           value={buildingType}
           onChange={(e) => setBuildingType(e.target.value)}
           placeholder="Entrez le type de bâtiment"
-          required
         />
 
         <label htmlFor="deliveryInstructions">Instructions pour le livreur</label>
@@ -115,11 +97,13 @@ const MyProfilePage = () => {
           id="deliveryInstructions"
           value={deliveryInstructions}
           onChange={(e) => setDeliveryInstructions(e.target.value)}
-          rows="4"
+          rows="4" // Vous pouvez ajuster le nombre de lignes selon votre besoin
           placeholder="Entrez les instructions pour la livraison"
         />
-
+        
         <button type="submit" className="update-profile-btn">Mettre à jour</button>
+
+
       </form>
     </div>
   );

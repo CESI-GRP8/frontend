@@ -1,0 +1,63 @@
+.orders-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espace entre les cartes */
+  }
+  
+  .order-card {
+    position: relative;
+    width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px; /* Ajoutez de la marge en bas pour séparer les cartes */
+  }
+  
+  .order-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    z-index: -1;
+  }
+  
+  .order-card:hover::before {
+    background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond semi-transparente */
+  }
+  
+  .order-card h3 {
+    margin-top: 0;
+  }
+  
+  .order-details {
+    margin-top: 1em;
+  }
+  
+  .order-details p {
+    margin: 0.5em 0;
+  }
+  
+  .track-order-btn {
+    width: 100%;
+    padding: 1em;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1em;
+  }
+  
+  .track-order-btn:hover {
+    background-color: #E6C200;
+  }
+  
