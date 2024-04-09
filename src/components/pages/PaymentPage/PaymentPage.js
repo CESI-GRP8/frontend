@@ -1,9 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PaymentPage.css'; // Assurez-vous que le chemin correspond à l'emplacement de votre fichier CSS
+import { useCart } from '../../../context/CartContext'; // Importez le hook useCart
+import './PaymentPage.css';
 
-const PaymentPage = () => {
+const PaymentPage = ({ location }) => {
   const navigate = useNavigate(); // Initialisez la fonction navigate
+  const { cartState } = useCart(); // Récupérez l'état du panier
+
+  // Récupérez le total à partir des props
+  const total = location && location.state ? location.state.total : 0;
 
   // Logique de paiement à intégrer ici
   const handleConfirmPayment = () => {
@@ -12,6 +17,9 @@ const PaymentPage = () => {
     // Naviguez vers la page /success
     navigate('/success');
   };
+
+  // Afficher le total dans la console pour le débogage
+  console.log('Total:', total);
 
   return (
     <div className="payment-page">
@@ -27,7 +35,7 @@ const PaymentPage = () => {
         </div>
         <div className="payment-total">
           <span>Prix:</span>
-          <span>48,90€</span>
+          <span>{total.toFixed(2)}€</span> {/* Utilisez totalPrice dans le composant */}
         </div>
         <button className="confirm-payment-button" onClick={handleConfirmPayment}>
           CONFIRMER PAIEMENT

@@ -16,7 +16,6 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
         <h3>{item.name}</h3>
         <div className="cart-item-details">
           <p className="cart-item-price">{item.price}€</p>
-          <QuantitySelector quantity={item.quantity} setQuantity={handleQuantityChange} />
           <button className="cart-item-remove" onClick={() => onRemove(item.id)}>X</button>
         </div>
       </div>
