@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './QuantitySelector.css';
 
 const QuantitySelector = ({ quantity, setQuantity }) => {
@@ -14,6 +14,12 @@ const QuantitySelector = ({ quantity, setQuantity }) => {
     setQuantity(q => q > 1 ? q - 1 : 1);
   };
 
+  // Effet pour effectuer une action après la mise à jour de la quantité
+  useEffect(() => {
+    // Action à effectuer après la mise à jour de la quantité
+    console.log("Nouvelle quantité :", quantity);
+  }, [quantity]);
+
   return (
     <div className="quantity-selector">
       <button onClick={decreaseQuantity}>-</button>
@@ -22,8 +28,5 @@ const QuantitySelector = ({ quantity, setQuantity }) => {
     </div>
   );
 };
-
-
-
 
 export default QuantitySelector;
