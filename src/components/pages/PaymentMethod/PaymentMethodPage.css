@@ -1,0 +1,98 @@
+.my-profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .profile-form {
+    width: 100%;
+    max-width: 400px; /* Ajustez la largeur au besoin */
+    background: #fff;
+    padding: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrage horizontal du formulaire */
+  }
+  
+  .profile-form h2 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  .profile-form label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  .profile-form input,
+  .profile-form select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .profile-form input[type="checkbox"] {
+    width: auto;
+  }
+  
+  .password-reset {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  
+  .password-reset a {
+    color: #007bff; /* Couleur primaire de Bootstrap pour la cohérence */
+    text-decoration: none;
+  }
+  
+  .update-profile-btn {
+    width: 100%;
+    padding: 1em;
+    background-color: #FFD700; /* Arrière-plan jaune pour correspondre au design */
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1em; /* Ajout d'une marge en haut */
+  }
+  
+  .update-profile-btn:hover {
+    background-color: #E6C200;
+  }
+  
+  .carte-bancaire {
+    background: #fff;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Changer la direction pour afficher les éléments en colonne */
+    align-items: flex-start; /* Alignement à gauche pour les éléments */
+    border-radius: 5px;
+  }
+  
+  .carte-bancaire p {
+    margin-bottom: 0.5em; /* Ajouter de l'espace entre les paragraphes */
+  }
+  
+  .carte-bancaire button {
+    background-color: #FFD700; /* Arrière-plan jaune pour correspondre au design */
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .carte-bancaire button:hover {
+    background-color: #E6C200;
+  }
+  

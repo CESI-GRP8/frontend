@@ -1,0 +1,68 @@
+/* HeroSection.css */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  background: url('https://cdn.discordapp.com/attachments/1074701297590206526/1226841302159720559/DESKTOPACCUEIL_brookelarklcZ9NxhOSlounsplash3.png?ex=66263c00&is=6613c700&hm=b823d191321b43db58f03d12270600c57b36d99aebf72b8e18823d0e52c26bf7&') no-repeat center center;
+  background-size: cover;
+  color: #000000; /* Assuming white text */
+  text-align: center; /* Center the text */
+  padding: 20px;
+  box-sizing: border-box;
+  background-attachment: fixed; /* Optional: fixes the background relative to the viewport */
+  min-height: 100vh;
+  min-width: 100vw; /* Add this to ensure it also covers full width */
+  max-width: 100%; /* Prevent any horizontal overflow */
+  overflow: hidden; /* Hide any overflow */
+
+}
+
+.hero-section h1 {
+  font-size: 3rem; /* Large font size for the headline */
+  margin-bottom: 0.5rem; /* Space below the headline */
+}
+
+.hero-section p {
+  font-size: 1.5rem; /* Smaller font size for the subheading */
+  margin-bottom: 2rem; /* Space above the button */
+}
+
+.delivery-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #FFD700; /* Yellow background to match the design */
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delivery-btn:hover {
+  background-color: #E6C200; /* Darker yellow on hover */
+}
+/* Add this at the end of your existing CSS */
+
+@media (min-width: 769px) {
+  .hero-section {
+    justify-content: flex-start; /* Aligns content to the top */
+    text-align: left; /* Aligns text to the left */
+  }
+
+  .hero-section h1,
+  .hero-section p {
+    align-self: flex-start; /* Aligns text to the left */
+    margin-left: 5%; /* Or as per your design's spacing */
+  }
+
+  .hero-section .delivery-btn {
+    align-self: center; /* Centers the button horizontally */
+    position: absolute; /* Takes the button out of the normal document flow */
+    bottom: 20%; /* Positions the button from the bottom */
+    left: 50%; /* Starts positioning from the center */
+    transform: translateX(-50%); /* Ensures the button is truly centered */
+  }
+}

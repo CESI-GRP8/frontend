@@ -1,0 +1,13 @@
+.sauce-list h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .sauce-list ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .sauce-list li {
+    padding: 0.25rem 0;
+  }
+  

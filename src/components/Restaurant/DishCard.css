@@ -1,0 +1,29 @@
+.dish-card {
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dish-image {
+    width: 150px; /* ou la taille que vous souhaitez */
+    height: 100px; /* ou la taille que vous souhaitez */
+    margin-right: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .dish-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dish-price {
+    font-weight: bold;
+    margin-top: auto;
+  }
+  
+  /* Stylez plus en détail selon vos besoins */
+  

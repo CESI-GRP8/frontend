@@ -1,0 +1,34 @@
+/* Style pour les restaurants vedettes */
+.vedette-list {
+    display: flex;
+    justify-content: center; /* Centre les cartes des restaurants vedettes */
+    gap: 20px;
+    margin-bottom: 40px; /* Espace avant le titre de la section suivante */
+  }
+  
+  /* Style pour les restaurants à proximité avec défilement horizontal */
+  .proximity-list {
+    display: flex; /* Utilise flexbox pour un défilement horizontal */
+    overflow-x: auto; /* Permet le défilement horizontal */
+    gap: 20px; /* Espace entre les cartes */
+    padding: 20px 0;
+  }
+  
+  .restaurant-card {
+    min-width: 250px; /* Largeur minimale pour chaque carte */
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Ajoutez d'autres styles pour la carte ici */
+  }
+  
+  /* Assurez-vous d'inclure le reset pour la scrollbar pour les navigateurs qui l'affichent */
+  .proximity-list::-webkit-scrollbar {
+    display: none; /* pour les navigateurs WebKit et Blink */
+  }
+  
+  .proximity-list {
+    -ms-overflow-style: none; /* pour Internet Explorer, Edge */
+    scrollbar-width: none; /* pour Firefox */
+  }
+  

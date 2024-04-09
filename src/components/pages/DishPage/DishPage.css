@@ -1,0 +1,14 @@
+.dish-page {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Vous pouvez ajouter des styles supplémentaires ici pour la mise en page de la page du plat */
+  
+  .dish-interactions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align children to the start of the container */
+  }
+  
