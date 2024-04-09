@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-color: #f4f4f4; /* Ajoutez une couleur de fond */
 }
 
 .profile-form {
@@ -31,7 +32,7 @@
 .profile-form select,
 .profile-form textarea {
     width: 100%;
-    padding: 0.5em;
+    padding: 0.8em; /* Augmentez légèrement la taille du padding pour un meilleur espacement */
     margin-bottom: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;

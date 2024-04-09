@@ -1,0 +1,38 @@
+/* OrderDeniedPage.css */
+.order-denied-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  text-align: center;
+  background-color: #F77272; /* Ou toute autre couleur correspondant à votre design */
+  height: 100vh; /* Hauteur totale du viewport */
+}
+
+.order-denied-page h1 {
+  margin-bottom: 30px;
+  color: #ffffff; /* Ou toute autre couleur que vous préférez pour le texte */
+}
+
+.denied-image {
+  width: 150px; /* Ou la taille que vous préférez */
+  height: 150px; /* Assurez-vous que la hauteur correspond à la largeur pour obtenir un cercle */
+  border-radius: 50%; /* Pour obtenir un cercle */
+  margin-bottom: 30px;
+}
+
+.order-denied-page p {
+  margin-bottom: 30px;
+  color: #ffffff; /* Ou toute autre couleur que vous préférez pour le texte */
+}
+
+.track-order-btn {
+  padding: 10px 20px;
+  background-color: #000; /* Ou toute autre couleur que vous préférez */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1em;
+}
