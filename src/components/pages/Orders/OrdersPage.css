@@ -44,7 +44,7 @@
     margin: 0.5em 0;
   }
   
-  .track-order-btn {
+  .track-order-btn1 {
     width: 100%;
     padding: 1em;
     background-color: #FFD700;
@@ -57,7 +57,7 @@
     margin-top: 1em;
   }
   
-  .track-order-btn:hover {
+  .track-order-btn1:hover {
     background-color: #E6C200;
   }
   

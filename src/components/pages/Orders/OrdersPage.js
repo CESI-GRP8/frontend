@@ -59,7 +59,7 @@ const OrdersPage = () => {
             </ul>
           </div>
           {order.status === 'En cours' && (
-            <button className="track-order-btn" onClick={() => trackOrder(order.id)}>Suivre ma commande</button>
+            <button className="track-order-btn1" onClick={() => trackOrder(order.id)}>Suivre ma commande</button>
           )}
         </div>
       ))}

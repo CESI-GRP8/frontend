@@ -14,12 +14,14 @@ import PasswordResetPage from './components/pages/PasswordResetPage/ResetPasswor
 import MyProfilePage from './components/pages/MyProfile/MyProfilePage';
 import PaymentMethodPage from './components/pages/PaymentMethod/PaymentMethodPage';
 import ContactUsPage from './components/pages/ContactUs/ContactUsPage';
-import ParametersPage from './components/pages/Parameters/ParametersPage';
+import SettingsPage from './components/pages/Settings/SettingsPage';
 import OrdersPage from './components/pages/Orders/OrdersPage';
 import PaymentPage from './components/pages/PaymentPage/PaymentPage';
 import OrderConfirmationPage from './components/pages/OrderConfirmationPage/OrderConfirmationPage';
 import OrderStatusPage from './components/pages/OrderStatusPage/OrderStatusPage';
-
+import OrderDeniedPage from './components/pages/OrderDeniedPage/OrderDeniedPage';
+import NotificationsPage from './components/pages/Notifications/NotificationsPage';
+import R_Orders from './components/pages/R_Orders/R_OrdersPage';
 
 
 const Layout = () => {
@@ -48,12 +50,14 @@ const Layout = () => {
         <Route path="/myprofile" element={<MyProfilePage/>}/>
         <Route path="/paymentmethod" element={<PaymentMethodPage/>}/>
         <Route path="/contactus" element={<ContactUsPage/>}/>
-        <Route path="/parameters" element={<ParametersPage/>}/>
+        <Route path="/settings" element={<SettingsPage/>}/>
         <Route path="/orders" element={<OrdersPage/>}/>
         <Route path="/payment" element={<PaymentPage/>}/>
         <Route path="/success" element={<OrderConfirmationPage/>}/>
+        <Route path="/denied" element={<OrderDeniedPage/>}/>
         <Route path="/suivi" element={<OrderStatusPage/>}/>
-
+        <Route path="/notifications" element={<NotificationsPage/>}/>
+        <Route path="/orders_r" element={<R_Orders/>}/>
       </Routes>
     </>
   );

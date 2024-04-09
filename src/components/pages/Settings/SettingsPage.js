@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ParametersPage.css'; // Assurez-vous d'importer le fichier CSS avec les styles fournis
+import './SettingsPage.css'; // Assurez-vous d'importer le fichier CSS avec les styles fournis
 
 
 const AccountSettings = () => {

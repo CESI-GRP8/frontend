@@ -1,0 +1,36 @@
+.notifications-container {
+  display: flex;
+  flex-direction: column; /* Afficher les notifications en colonnes */
+  align-items: center; /* Centrer horizontalement les notifications */
+}
+
+.notification {
+  width: 80%; /* Largeur de la notification */
+  margin-bottom: 20px; /* Espace entre chaque notification */
+  background-color: #ffffff; /* Couleur de fond */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 20px; /* Espacement interne */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre */
+  transition: transform 0.3s ease; /* Transition au survol */
+}
+
+.notification:hover {
+  transform: translateY(-5px); /* Animation de survol */
+}
+
+.notification p {
+  margin: 0; /* Supprimer les marges par défaut des paragraphes */
+}
+
+.notification.en-cours {
+  background-color: #ffd700; /* Couleur pour "En cours" */
+}
+
+.notification.en-livraison {
+  background-color: #90ee90; /* Couleur pour "En livraison" */
+}
+
+.notification.termine {
+  background-color: #87ceeb; /* Couleur pour "Terminé" */
+}
