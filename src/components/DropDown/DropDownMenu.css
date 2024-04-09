@@ -1,0 +1,23 @@
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; /* Ajustez la largeur du menu déroulant */
+  }
+  
+  .dropdown-menu select {
+    width: 100%; /* Ajustez la largeur du sélecteur */
+    padding: 10px; /* Ajoutez un remplissage pour un meilleur aspect */
+    border: none; /* Supprimez la bordure */
+    background-color: #ffffff; /* Couleur de fond */
+    color: #000000; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    border-radius: 5px; /* Coins arrondis */
+    transition: background-color 0.3s ease; /* Transition sur le survol */
+  }
+  
+  .dropdown-menu select:hover {
+    background-color: #E6C200; /* Fond jaune clair au survol */
+  }
+  

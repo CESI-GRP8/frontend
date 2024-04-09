@@ -6,6 +6,7 @@
   padding: 1rem 5%;
   width: 100%; /* Ensure header spans full width */
   box-sizing: border-box;
+  position: relative; /* Ajout de position relative pour le positionnement absolu du menu déroulant */
 }
 
 .header-logo {
@@ -39,22 +40,40 @@
   background-color: #E6C200; /* Darker yellow on hover for the button */
 }
 
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-  
-  @media (max-width: 769px) {
-    .header {
-        padding: 1rem 2rem;
-    }
-    
-    .header-logo {
-        height: 10px; /* Smaller logo on mobile */
-    }
-    
-    .header-nav {
-        gap: 8px;
-    }
-    
-    .nav-link {
-        padding: 8px 16px; /* Smaller button on mobile */
-    }
+.dropdown-menu select {
+  width: 200px; /* Adjust the width of the dropdown menu */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-right: 10px; /* Add space between username and logout button */
+}
+
+@media (max-width: 769px) {
+  .header {
+    padding: 1rem 2rem;
   }
+
+  .header-logo {
+    height: 10px; /* Smaller logo on mobile */
+  }
+
+  .header-nav {
+    gap: 8px;
+  }
+
+  .nav-link {
+    padding: 8px 16px; /* Smaller button on mobile */
+  }
+}

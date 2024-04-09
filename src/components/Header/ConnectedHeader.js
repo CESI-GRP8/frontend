@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ConnectedHeader.css';
+import DropdownMenu from '../DropDown/DropDownMenu';
 
 const ConnectedHeader = ({ username, onLogout }) => {
   return (
@@ -15,6 +16,7 @@ const ConnectedHeader = ({ username, onLogout }) => {
         <Link to="/favorites" className="nav-link">FAVORIS</Link>
         <Link to="/notifications" className="nav-link">NOTIFICATIONS</Link>
       </nav>
+      <DropdownMenu />
       <div className="user-info">
         {/* Utiliser username ou avatar ici */}
         <span className="username">{username}</span>
