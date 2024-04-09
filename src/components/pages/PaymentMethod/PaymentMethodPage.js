@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './PaymentMethodPage.css'; // Assurez-vous d'importer le fichier CSS avec les styles fournis
 
-function CarteBancaire({ carte, onDelete }) {
+function CarteBancaire({ carte, onDelete, onSetDefault, isDefault }) {
   return (
     <div className="carte-bancaire">
       <p>{carte.numero}</p>
       <p>{carte.dateExpiration}</p>
       <p>{carte.nom}</p>
       <button onClick={() => onDelete(carte)}>Supprimer</button>
+      <br></br>
+      <button onClick={() => onSetDefault(carte)}>{isDefault ? "Carte par défaut" : "Définir par défaut"}</button>
     </div>
   );
 }
@@ -16,6 +18,7 @@ function PageCarteBancaire() {
   const [nouvelleCarte, setNouvelleCarte] = useState({});
   const [cartes, setCartes] = useState([]);
   const [erreur, setErreur] = useState('');
+  const [carteParDefaut, setCarteParDefaut] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +42,13 @@ function PageCarteBancaire() {
 
   const handleDelete = (carteToDelete) => {
     setCartes(prevCartes => prevCartes.filter(carte => carte !== carteToDelete));
+    if (carteParDefaut === carteToDelete) {
+      setCarteParDefaut(null); // Réinitialiser la carte par défaut si elle est supprimée
+    }
+  };
+
+  const handleSetDefault = (carteToSetDefault) => {
+    setCarteParDefaut(carteToSetDefault); // Définir la carte comme carte par défaut
   };
 
   return (
@@ -81,7 +91,13 @@ function PageCarteBancaire() {
       <h2>Liste des cartes bancaires</h2>
       <div className="liste-cartes">
         {cartes.map((carte, index) => (
-          <CarteBancaire key={index} carte={carte} onDelete={handleDelete} />
+          <CarteBancaire 
+            key={index} 
+            carte={carte} 
+            onDelete={handleDelete} 
+            onSetDefault={handleSetDefault} 
+            isDefault={carte === carteParDefaut}
+          />
         ))}
       </div>
     </div>

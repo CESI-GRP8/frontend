@@ -20,7 +20,7 @@ const CartSummary = ({ subtotal, taxes, shipping, total }) => {
         <span>Total</span>
         <span>{total}€</span>
       </div>
-      <button className="cart-summary-checkout">COMMANDER</button>
+      <a href="/payment"><button className="cart-summary-checkout">COMMANDER</button></a>
     </div>
   );
 };

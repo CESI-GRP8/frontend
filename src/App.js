@@ -16,6 +16,9 @@ import PaymentMethodPage from './components/pages/PaymentMethod/PaymentMethodPag
 import ContactUsPage from './components/pages/ContactUs/ContactUsPage';
 import ParametersPage from './components/pages/Parameters/ParametersPage';
 import OrdersPage from './components/pages/Orders/OrdersPage';
+import PaymentPage from './components/pages/PaymentPage/PaymentPage';
+import OrderConfirmationPage from './components/pages/OrderConfirmationPage/OrderConfirmationPage';
+import OrderStatusPage from './components/pages/OrderStatusPage/OrderStatusPage';
 
 
 
@@ -47,6 +50,9 @@ const Layout = () => {
         <Route path="/contactus" element={<ContactUsPage/>}/>
         <Route path="/parameters" element={<ParametersPage/>}/>
         <Route path="/orders" element={<OrdersPage/>}/>
+        <Route path="/payment" element={<PaymentPage/>}/>
+        <Route path="/success" element={<OrderConfirmationPage/>}/>
+        <Route path="/suivi" element={<OrderStatusPage/>}/>
 
       </Routes>
     </>
