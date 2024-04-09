@@ -1,0 +1,40 @@
+.dish-detail {
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .dish-image-container {
+    flex: 1;
+    padding: 10px;
+  }
+ 
+  
+  .dish-image {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .dish-info {
+    flex: 2;
+    padding: 10px;
+  }
+  
+  .dish-price {
+    font-size: 24px;
+    color: #FFD700;
+    font-weight: bold;
+  }
+  
+  .add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Continuez avec plus de styles pour correspondre à votre conception */
+  

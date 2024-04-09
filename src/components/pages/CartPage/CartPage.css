@@ -1,0 +1,17 @@
+/* CartPage.css */
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%; /* Ou la largeur que vous préférez pour la page */
+    max-width: 1200px; /* Une largeur maximale pour éviter que la page soit trop large sur les grands écrans */
+    padding: 20px;
+  }
+  
+  /* Vous pouvez ajouter plus de styles pour les éléments mobiles, les médias queries, etc. */
+  @media (max-width: 768px) {
+    .cart-page {
+      width: 95%; /* Plus de marge sur les petits écrans */
+    }
+  }
+  

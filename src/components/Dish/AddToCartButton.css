@@ -1,0 +1,15 @@
+.add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #FFD700; /* La couleur jaune du thème */
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #E6C200; /* Une teinte de jaune plus foncée au survol */
+  }
+  

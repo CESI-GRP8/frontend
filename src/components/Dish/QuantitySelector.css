@@ -1,0 +1,16 @@
+.quantity-selector {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-selector button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Continuez avec plus de styles pour correspondre à votre conception */
+  

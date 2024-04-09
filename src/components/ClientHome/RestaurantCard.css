@@ -1,0 +1,36 @@
+.restaurant-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .restaurant-image {
+    width: 100%;
+    object-fit: cover; /* Adjust as necessary to fit the image size */
+  }
+  
+  .restaurant-info {
+    padding: 15px;
+  }
+  
+  .restaurant-info h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  
+  .restaurant-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+
+/* Ajoutez tous vos styles existants pour .restaurant-card ici */
+
+.restaurant-card-link {
+    text-decoration: none; /* Retire le soulignement des liens */
+    color: inherit; /* Les liens utilisent la couleur de texte héritée */
+  }
+

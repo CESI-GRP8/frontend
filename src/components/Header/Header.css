@@ -1,0 +1,60 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent; /* As per the design */
+  padding: 1rem 5%;
+  width: 100%; /* Ensure header spans full width */
+  box-sizing: border-box;
+}
+
+.header-logo {
+  height: 50px; /* Replace with actual height from your design */
+  margin-left: 0; /* Ensure logo is pushed to the far left */
+}
+
+.header-nav {
+  display: flex;
+  gap: 16px; /* Adjust the gap based on your design */
+  margin-right: 0; /* Ensure nav is pushed to the far right */
+}
+
+.nav-link {
+  padding: 10px 20px;
+  border: none;
+  background-color: #FFD700; /* Yellow background for the button */
+  text-decoration: none;
+  color: #000; /* Text color */
+  font-weight: bold;
+  border-radius: 5px; /* Rounded corners for the button */
+  transition: background-color 0.3s ease;
+}
+
+.nav-link--signin {
+  background-color: transparent; /* No background for the signin link */
+  color: #000000; /* White text color */
+}
+
+.nav-link:hover {
+  background-color: #E6C200; /* Darker yellow on hover for the button */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .header {
+      padding: 1rem 2rem;
+  }
+  
+  .header-logo {
+      height: 40px; /* Smaller logo on mobile */
+  }
+  
+  .header-nav {
+      gap: 8px;
+  }
+  
+  .nav-link {
+      padding: 8px 16px; /* Smaller button on mobile */
+  }
+}

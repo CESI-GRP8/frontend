@@ -1,0 +1,54 @@
+/* Style de la section principale */
+.account-settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  /* Style du formulaire */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style du titre */
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Style des champs de saisie */
+  .form-container input[type="password"],
+  .form-container input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style du bouton */
+  .form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Style du bouton au survol */
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  
