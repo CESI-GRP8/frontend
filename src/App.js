@@ -22,6 +22,8 @@ import OrderStatusPage from './components/pages/OrderStatusPage/OrderStatusPage'
 import OrderDeniedPage from './components/pages/OrderDeniedPage/OrderDeniedPage';
 import NotificationsPage from './components/pages/Notifications/NotificationsPage';
 import R_Orders from './components/pages/R_Orders/R_OrdersPage';
+import { CartProvider } from './context/CartContext';
+
 
 
 const Layout = () => {
@@ -67,7 +69,9 @@ const Layout = () => {
 const App = () => {
   return (
     <Router>
-      <Layout />
+      <CartProvider> {/* Enveloppez Layout avec CartProvider */}
+        <Layout />
+      </CartProvider>
     </Router>
   );
 };

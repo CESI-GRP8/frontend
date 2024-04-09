@@ -3,7 +3,7 @@ import CartItem from './CartItem';
 import './Cart.css'; // Vous devriez créer ce fichier CSS pour styler le composant
 
 const Cart = ({ cartItems, onUpdateQuantity, onRemove }) => {
-  // Logique pour calculer les totaux, etc.
+  console.log("Cart component items:", cartItems); // Afficher les articles passés au composant Cart
 
   return (
     <div className="cart">
