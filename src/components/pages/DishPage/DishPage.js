@@ -4,21 +4,33 @@ import QuantitySelector from '../../Dish/QuantitySelector';
 import IngredientList from '../../Dish/IngredientList';
 import SauceList from '../../Dish/SauceList';
 import AddToCartButton from '../../Dish/AddToCartButton';
+import { useCart } from '../../../context/CartContext';
 import './DishPage.css';
 
 const DishPage = () => {
   const [quantity, setQuantity] = useState(1); // Initialiser la quantité
+  const { dispatch } = useCart(); // Utiliser le dispatch du contexte du panier
   const dishData = {
     id: 123, // ID unique du plat
     name: 'Naan Farmer',
     price: 15.30,
     ingredients: ['Salade', 'Tomates', 'Oignons'],
     sauces: ['Biggy', 'Mayonnaise', 'Ketchup'],
-    // ...autres détails du plat
+
   };
   const handleAddToCart = () => {
-    // Logique d'ajout au panier
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: {
+        id: dishData.id,
+        name: dishData.name,
+        price: dishData.price,
+        quantity,
+        imageUrl: dishData.imageUrl, // Assurez-vous d'inclure l'URL de l'image
+      },
+    });
   };
+  
 
   return (
     <div className="dish-page">

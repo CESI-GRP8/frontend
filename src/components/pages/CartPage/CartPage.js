@@ -1,58 +1,48 @@
-import React, { useState, useEffect } from 'react';
+// CartPage.js
+import React from 'react';
+import { useCart } from '../../../context/CartContext'; // Assurez-vous que le chemin est correct
 import Cart from '../../Cart/Cart';
 import CartSummary from '../../Cart/CartSummary';
 import './CartPage.css';
 
 const CartPage = () => {
-  // Exemple de données de panier, normalement cela viendrait de l'état global de l'application ou d'une API
-  const [cartItems, setCartItems] = useState([
-    {
-      id: '1',
-      name: 'Naan Farmer',
-      price: 15.30,
-      quantity: 2,
-      imageUrl: 'url-to-image', // Remplacez par vos URLs d'images
-    },
-    // ... d'autres articles
-  ]);
+  // Utiliser le hook useCart pour accéder à l'état global du panier et à la fonction dispatch
+  const { cartState, dispatch } = useCart();
+  console.log("Cart items:", cartState.items); // Affiche l'état actuel du panier
+
 
   const handleUpdateQuantity = (itemId, newQuantity) => {
-    const updatedQuantity = Number(newQuantity);
-    setCartItems(currentItems =>
-      currentItems.map(item =>
-        item.id === itemId ? { ...item, quantity: updatedQuantity >= 0 ? updatedQuantity : 0 } : item
-      )
-    );
+    dispatch({
+      type: 'UPDATE_QUANTITY',
+      payload: { id: itemId, quantity: Number(newQuantity) },
+    });
   };
 
   const handleRemoveItem = itemId => {
-    setCartItems(currentItems => currentItems.filter(item => item.id !== itemId));
+    dispatch({
+      type: 'REMOVE_ITEM',
+      payload: { id: itemId },
+    });
   };
 
-  // Logique pour le calcul des totaux
-  const [totals, setTotals] = useState({ subtotal: 0, taxes: 0, shipping: 0, total: 0 });
-
-  useEffect(() => {
-    const newSubtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const newTaxes = newSubtotal * 0.1; // Par exemple, 10% de taxes
-    const newShipping = 3.99; // Frais de livraison fixes pour l'exemple
-    const newTotal = newSubtotal + newTaxes + newShipping;
-
-    setTotals({ subtotal: newSubtotal, taxes: newTaxes, shipping: newShipping, total: newTotal });
-  }, [cartItems]); // Recalculer lorsque cartItems change
+  // Calculer les totaux en se basant sur l'état global du panier
+  const subtotal = cartState.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const taxes = subtotal * 0.1; // Par exemple, 10% de taxes
+  const shipping = 3.99; // Frais de livraison fixes pour l'exemple
+  const total = subtotal + taxes + shipping;
 
   return (
     <div className="cart-page">
       <Cart 
-        cartItems={cartItems} 
+        cartItems={cartState.items} 
         onUpdateQuantity={handleUpdateQuantity} 
         onRemove={handleRemoveItem} 
       />
       <CartSummary 
-        subtotal={totals.subtotal} 
-        taxes={totals.taxes} 
-        shipping={totals.shipping} 
-        total={totals.total} 
+        subtotal={subtotal} 
+        taxes={taxes} 
+        shipping={shipping} 
+        total={total} 
       />
     </div>
   );

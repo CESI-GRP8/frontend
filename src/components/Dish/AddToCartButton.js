@@ -1,16 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Importez useNavigate depuis react-router-dom
 import './AddToCartButton.css';
 
 const AddToCartButton = ({ onAddToCart }) => {
+  const navigate = useNavigate(); // Initialisez useNavigate
+
+  const handleClick = () => {
+    onAddToCart(); // Appelez la fonction de gestion de l'ajout au panier
+    navigate('/cart'); // Redirigez l'utilisateur vers la page du panier
+  };
+
   return (
-    <a href="/cart">
-    <button className="add-to-cart-button" onClick={onAddToCart}>
+    <button className="add-to-cart-button" onClick={handleClick}>
       AJOUTER AU PANIER
     </button>
-    </a>
   );
 };
-
-
 
 export default AddToCartButton;

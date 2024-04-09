@@ -19,6 +19,7 @@ import OrdersPage from './components/pages/Orders/OrdersPage';
 import PaymentPage from './components/pages/PaymentPage/PaymentPage';
 import OrderConfirmationPage from './components/pages/OrderConfirmationPage/OrderConfirmationPage';
 import OrderStatusPage from './components/pages/OrderStatusPage/OrderStatusPage';
+import { CartProvider } from './context/CartContext';
 
 
 
@@ -63,7 +64,9 @@ const Layout = () => {
 const App = () => {
   return (
     <Router>
-      <Layout />
+      <CartProvider> {/* Enveloppez Layout avec CartProvider */}
+        <Layout />
+      </CartProvider>
     </Router>
   );
 };
