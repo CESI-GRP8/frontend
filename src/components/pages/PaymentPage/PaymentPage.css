@@ -1,0 +1,65 @@
+/* PaymentPage.css */
+.payment-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .payment-details {
+    width: 100%;
+    max-width: 500px; /* Adjust width as needed */
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+  }
+  
+  .payment-info {
+    margin: 20px 0;
+  }
+  
+  .payment-info div {
+    margin-bottom: 15px;
+  }
+  
+  .payment-info span {
+    font-weight: bold;
+  }
+  
+  .payment-info p {
+    margin: 5px 0;
+  }
+  
+  .payment-info button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #FFD700; /* Yellow background for the button */
+    text-decoration: none;
+    color: #000; /* Text color */
+    font-weight: bold;
+    border-radius: 5px; /* Rounded corners for the button */
+    transition: background-color 0.3s ease;
+  }
+  
+  .payment-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .confirm-payment-btn {
+    background-color: #FFD700;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    width: 100%;
+  }
+  

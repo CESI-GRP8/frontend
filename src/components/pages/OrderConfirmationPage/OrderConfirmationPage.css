@@ -1,0 +1,40 @@
+/* OrderConfirmationPage.css */
+.order-confirmation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    text-align: center;
+    background-color: #FFD700; /* Or any color that matches your design */
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  .order-confirmation-page h1 {
+    margin-bottom: 30px;
+    color: #ffffff; /* Or any color you prefer for the text */
+  }
+  
+  .confirmation-image {
+    width: 150px; /* Ou la taille que vous préférez */
+    height: 150px; /* Assurez-vous que la hauteur correspond à la largeur pour obtenir un cercle */
+    border-radius: 50%; /* Pour obtenir un cercle */
+    margin-bottom: 30px;
+}
+
+  
+  .order-confirmation-page p {
+    margin-bottom: 30px;
+    color: #ffffff; /* Or any color you prefer for the text */
+  }
+  
+  .track-order-btn {
+    padding: 10px 20px;
+    background-color: #000; /* Or any color you prefer */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
