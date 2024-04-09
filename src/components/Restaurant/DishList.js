@@ -1,32 +1,17 @@
+// DishList.js
 import React from 'react';
 import DishCard from './DishCard';
-import './DishList.css';
-
-// Supposons que vous ayez un tableau de plats pour ce restaurant
-const dishes = [
-  {
-    id: 1,
-    title: 'Naan Farmer',
-    description: '2 steaks, 2 cheddar, œuf, jambon de dinde, tender',
-    price: 15.30,
-    imageUrl: '/path-to-image.jpg',
-  },
-  {
-    id: 1,
-    title: 'Naan Farmer',
-    description: '2 steaks, 2 cheddar, œuf, jambon de dinde, tender',
-    price: 15.30,
-    imageUrl: '/path-to-image.jpg',
-  },
-  // ... d'autres plats
-];
+import { useDishes } from '../../context/DishesContext';
 
 const DishList = () => {
+  const { dishes } = useDishes(); // Utilisez les plats depuis le contexte
+
   return (
     <div className="dish-list">
       {dishes.map((dish) => (
         <DishCard
           key={dish.id}
+          id={dish.id}
           title={dish.title}
           description={dish.description}
           price={dish.price}

@@ -20,7 +20,9 @@ import PaymentPage from './components/pages/PaymentPage/PaymentPage';
 import OrderConfirmationPage from './components/pages/OrderConfirmationPage/OrderConfirmationPage';
 import OrderStatusPage from './components/pages/OrderStatusPage/OrderStatusPage';
 import { CartProvider } from './context/CartContext';
-
+import { DishesProvider } from './context/DishesContext'; // Ajustez le chemin selon votre structure
+import { PaymentProvider } from './context/PaymentContext';
+import { UserProfileProvider } from './context/UserProfileContext';
 
 
 const Layout = () => {
@@ -64,9 +66,15 @@ const Layout = () => {
 const App = () => {
   return (
     <Router>
-      <CartProvider> {/* Enveloppez Layout avec CartProvider */}
-        <Layout />
-      </CartProvider>
+      <UserProfileProvider>
+      <PaymentProvider>
+      <DishesProvider> {/* Enveloppez CartProvider et Layout avec DishesProvider */}
+        <CartProvider>
+          <Layout />
+        </CartProvider>
+      </DishesProvider>
+      </PaymentProvider>
+      </UserProfileProvider>
     </Router>
   );
 };

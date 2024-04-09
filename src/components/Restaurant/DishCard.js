@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './DishCard.css';
 
-const DishCard = ({ title, description, price, imageUrl }) => {
+const DishCard = ({ id, title, description, price, imageUrl }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/dish/${id}`);
+  };
+
   return (
     <div className="dish-card">
       <img src={imageUrl} alt={title} className="dish-image" />
@@ -9,10 +16,11 @@ const DishCard = ({ title, description, price, imageUrl }) => {
         <h3>{title}</h3>
         <p>{description}</p>
         <div className="dish-price">{price}€</div>
-        {/* Ajoutez un bouton d'ajout au panier ici si nécessaire */}
+        <button className="add-to-cart-button" onClick={handleClick}>Voir</button>
       </div>
     </div>
   );
 };
+
 
 export default DishCard;

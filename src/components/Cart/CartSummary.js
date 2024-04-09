@@ -6,11 +6,15 @@ const CartSummary = ({ subtotal, taxes, shipping, total }) => {
   const navigate = useNavigate(); // Initialisation de useNavigate
 
   const handleCheckout = () => {
+    // Imprimer les valeurs juste avant de naviguer
+    console.log({ subtotal, taxes, shipping, total });
+
     // Naviguer vers la page de paiement avec les informations sur le prix
     navigate('/payment', {
       state: { subtotal, taxes, shipping, total }
     });
-  };
+};
+
 
   // Fonction pour arrondir les valeurs à deux décimales
   const formatPrice = (price) => {

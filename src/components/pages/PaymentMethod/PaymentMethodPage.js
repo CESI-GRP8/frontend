@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './PaymentMethodPage.css'; // Assurez-vous d'importer le fichier CSS avec les styles fournis
+import { usePayment } from '../../../context/PaymentContext'; // Ajustez le chemin selon votre structure
+import './PaymentMethodPage.css';
 
 function CarteBancaire({ carte, onDelete, onSetDefault, isDefault }) {
   return (
@@ -8,7 +9,7 @@ function CarteBancaire({ carte, onDelete, onSetDefault, isDefault }) {
       <p>{carte.dateExpiration}</p>
       <p>{carte.nom}</p>
       <button onClick={() => onDelete(carte)}>Supprimer</button>
-      <br></br>
+      <br />
       <button onClick={() => onSetDefault(carte)}>{isDefault ? "Carte par défaut" : "Définir par défaut"}</button>
     </div>
   );
@@ -16,9 +17,8 @@ function CarteBancaire({ carte, onDelete, onSetDefault, isDefault }) {
 
 function PageCarteBancaire() {
   const [nouvelleCarte, setNouvelleCarte] = useState({});
-  const [cartes, setCartes] = useState([]);
   const [erreur, setErreur] = useState('');
-  const [carteParDefaut, setCarteParDefaut] = useState(null);
+  const { cartes, setCartes, carteParDefaut, setCarteParDefaut } = usePayment();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +26,6 @@ function PageCarteBancaire() {
       ...prevCarte,
       [name]: value
     }));
-    setErreur('');
   };
 
   const handleSubmit = (e) => {
@@ -35,6 +34,7 @@ function PageCarteBancaire() {
       setErreur('Veuillez remplir tous les champs.');
       return;
     }
+
     setCartes(prevCartes => [...prevCartes, nouvelleCarte]);
     setNouvelleCarte({});
     setErreur('');
@@ -43,12 +43,12 @@ function PageCarteBancaire() {
   const handleDelete = (carteToDelete) => {
     setCartes(prevCartes => prevCartes.filter(carte => carte !== carteToDelete));
     if (carteParDefaut === carteToDelete) {
-      setCarteParDefaut(null); // Réinitialiser la carte par défaut si elle est supprimée
+      setCarteParDefaut(null);
     }
   };
 
   const handleSetDefault = (carteToSetDefault) => {
-    setCarteParDefaut(carteToSetDefault); // Définir la carte comme carte par défaut
+    setCarteParDefaut(carteToSetDefault);
   };
 
   return (

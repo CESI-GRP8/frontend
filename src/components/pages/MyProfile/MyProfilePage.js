@@ -1,36 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useUserProfile } from '../../../context/UserProfileContext'; // Ajustez le chemin selon votre structure
 import './MyProfilePage.css';
 
 const MyProfilePage = () => {
-  const [referralCode, setReferralCode] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
-  const [streetAddress, setStreetAddress] = useState('');
-  const [buildingType, setBuildingType] = useState('');
-  const [deliveryInstructions, setDeliveryInstructions] = useState('');
+  const { profile, setProfile } = useUserProfile();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // Mise à jour de l'adresse si le champ modifié appartient à l'adresse
+    if (["country", "city", "streetAddress", "buildingType", "deliveryInstructions"].includes(name)) {
+      setProfile({
+        ...profile,
+        address: { ...profile.address, [name]: value },
+      });
+    } else {
+      setProfile({ ...profile, [name]: value });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Logique pour sauvegarder les modifications du profil localement
+    localStorage.setItem('userProfile', JSON.stringify(profile));
+    console.log("Profil mis à jour avec succès :", profile);
+  };
+  
 
   return (
     <div className="my-profile-page">
       <h2>Mon Profil</h2>
-      <form className="profile-form">
+      <form className="profile-form" onSubmit={handleSubmit}>
+        {/* Les champs de formulaire restent similaires */}
+        {/* Utilisez profile pour définir les valeurs et handleChange pour les mises à jour */}
         <label htmlFor="referralCode">Code de parrainage</label>
         <input
           id="referralCode"
           type="text"
-          value={referralCode}
-          onChange={(e) => setReferralCode(e.target.value)}
+          name="referralCode"
+          value={profile.referralCode}
+          onChange={handleChange}
         />
 
         <label htmlFor="lastName">Nom *</label>
         <input
           id="lastName"
           type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          placeholder="Entrez votre nom de famille"
+          name="lastName"
+          value={profile.lastName}
+          onChange={handleChange}
           required
         />
 
@@ -38,9 +55,9 @@ const MyProfilePage = () => {
         <input
           id="firstName"
           type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          placeholder="Entrez votre prénom"
+          name="firstName"
+          value={profile.firstName}
+          onChange={handleChange}
           required
         />
 
@@ -48,62 +65,61 @@ const MyProfilePage = () => {
         <input
           id="phoneNumber"
           type="tel"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          placeholder="Entrez votre numéro de téléphone"
+          name="phoneNumber"
+          value={profile.phoneNumber}
+          onChange={handleChange}
           required
         />
 
+        {/* Assurez-vous que les champs d'adresse utilisent profile.address pour leurs valeurs */}
         <label htmlFor="country">Pays</label>
         <select
           id="country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          placeholder="Sélectionnez votre pays"
+          name="country"
+          value={profile.address.country}
+          onChange={handleChange}
         >
           <option value="">Sélectionnez votre pays</option>
-          {/* Ajoutez ici la liste des pays du monde */}
+          <option value="FR">France</option>
         </select>
 
         <label htmlFor="city">Ville</label>
         <input
           id="city"
           type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="Entrez votre ville"
+          name="city"
+          value={profile.address.city}
+          onChange={handleChange}
         />
 
         <label htmlFor="streetAddress">N° de voie, Rue</label>
         <input
           id="streetAddress"
           type="text"
-          value={streetAddress}
-          onChange={(e) => setStreetAddress(e.target.value)}
-          placeholder="Entrez votre adresse"
+          name="streetAddress"
+          value={profile.address.streetAddress}
+          onChange={handleChange}
         />
 
         <label htmlFor="buildingType">Type de bâtiment</label>
         <input
           id="buildingType"
           type="text"
-          value={buildingType}
-          onChange={(e) => setBuildingType(e.target.value)}
-          placeholder="Entrez le type de bâtiment"
+          name="buildingType"
+          value={profile.address.buildingType}
+          onChange={handleChange}
         />
 
         <label htmlFor="deliveryInstructions">Instructions pour le livreur</label>
         <textarea
           id="deliveryInstructions"
-          value={deliveryInstructions}
-          onChange={(e) => setDeliveryInstructions(e.target.value)}
-          rows="4" // Vous pouvez ajuster le nombre de lignes selon votre besoin
-          placeholder="Entrez les instructions pour la livraison"
+          name="deliveryInstructions"
+          value={profile.address.deliveryInstructions}
+          onChange={handleChange}
+          rows="4"
         />
-        
+
         <button type="submit" className="update-profile-btn">Mettre à jour</button>
-
-
       </form>
     </div>
   );
