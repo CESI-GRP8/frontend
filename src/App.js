@@ -23,7 +23,9 @@ import OrderDeniedPage from './components/pages/OrderDeniedPage/OrderDeniedPage'
 import NotificationsPage from './components/pages/Notifications/NotificationsPage';
 import R_Orders from './components/pages/R_Orders/R_OrdersPage';
 import { CartProvider } from './context/CartContext';
-
+import { DishesProvider } from './context/DishesContext'; // Ajustez le chemin selon votre structure
+import { PaymentProvider } from './context/PaymentContext';
+import { UserProfileProvider } from './context/UserProfileContext';
 
 
 const Layout = () => {
@@ -69,9 +71,15 @@ const Layout = () => {
 const App = () => {
   return (
     <Router>
-      <CartProvider> {/* Enveloppez Layout avec CartProvider */}
-        <Layout />
-      </CartProvider>
+      <UserProfileProvider>
+      <PaymentProvider>
+      <DishesProvider> {/* Enveloppez CartProvider et Layout avec DishesProvider */}
+        <CartProvider>
+          <Layout />
+        </CartProvider>
+      </DishesProvider>
+      </PaymentProvider>
+      </UserProfileProvider>
     </Router>
   );
 };
