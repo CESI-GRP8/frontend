@@ -1,14 +1,37 @@
 import React, { useState } from 'react';
 import './SignInPage.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useUserProfile } from '../../../context/UserProfileContext';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { setProfile } = useUserProfile();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle the sign-in logic here
-    console.log('Signing in with:', email, password);
+    try {
+      const response = await axios.post('http://localhost/1.0/accounts/login', {
+        email,
+        password
+      });
+      console.log('Response from server:', response.data);
+      if (response.status === 200) {
+        // Stocker le jeton d'authentification dans le localStorage
+        const { token, id } = response.data;
+        localStorage.setItem('token', token);
+        // Stocker l'ID de l'utilisateur dans le localStorage
+        localStorage.setItem('userId', id);
+        // Rediriger vers la page de paiement après la connexion réussie
+        navigate('/restaurant');
+        console.log('UTILISATEUR ID:', id);
+        console.log('LE TOKEN', token);
+      }
+    } catch (error) {
+      console.error('Error while signing in:', error);
+    }
   };
 
   return (

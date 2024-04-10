@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Importez useNavigate
 import './DropDownMenu.css';
 
 
-const DropdownMenu = () => {
+const DropDownMenu = () => {
   const navigate = useNavigate(); // Initialisez useNavigate
   const handleSelectOption = (selectedOption) => {
     console.log(`Option sélectionnée : ${selectedOption}`);

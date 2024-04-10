@@ -1,122 +1,126 @@
-import React from 'react';
-import { useUserProfile } from '../../../context/UserProfileContext'; // Ajustez le chemin selon votre structure
+import React, { useEffect, useState } from 'react';
 import './MyProfilePage.css';
+import axios from 'axios';
 
 const MyProfilePage = () => {
-  const { profile, setProfile } = useUserProfile();
+  const [profile, setProfile] = useState({
+    _id: '',
+    firstname: '',
+    surname: '',
+    email: '',
+    phone: '',
+    address: '',
+    sponsorCode: '',
+    userSponsorCode: ''
+  });
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        // Effectuer une requête GET à l'API pour récupérer les données de profil de l'utilisateur
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+          const response = await axios.get(`http://localhost/1.0/accounts/users/${userId}`);
+          // Mettre à jour l'état avec les données récupérées
+          setProfile(response.data[0]);
+          console.log('Données de profil récupérées :', response.data[0]);
+        }
+      } catch (error) {
+        console.error('Error while fetching user profile:', error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Mise à jour de l'adresse si le champ modifié appartient à l'adresse
-    if (["country", "city", "streetAddress", "buildingType", "deliveryInstructions"].includes(name)) {
-      setProfile({
-        ...profile,
-        address: { ...profile.address, [name]: value },
-      });
-    } else {
-      setProfile({ ...profile, [name]: value });
-    }
+    setProfile(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logique pour sauvegarder les modifications du profil localement
-    localStorage.setItem('userProfile', JSON.stringify(profile));
-    console.log("Profil mis à jour avec succès :", profile);
+    try {
+      // Effectuer une requête PATCH à l'API pour mettre à jour les données du profil
+      await axios.patch(`http://localhost/1.0/accounts/users/${profile._id}`, profile);
+      console.log('Profil mis à jour avec succès :', profile);
+    } catch (error) {
+      console.error('Error updating user profile:', error);
+    }
   };
-  
 
   return (
     <div className="my-profile-page">
       <h2>Mon Profil</h2>
       <form className="profile-form" onSubmit={handleSubmit}>
-        {/* Les champs de formulaire restent similaires */}
-        {/* Utilisez profile pour définir les valeurs et handleChange pour les mises à jour */}
-        <label htmlFor="referralCode">Code de parrainage</label>
-        <input
-          id="referralCode"
-          type="text"
-          name="referralCode"
-          value={profile.referralCode}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="lastName">Nom *</label>
-        <input
-          id="lastName"
-          type="text"
-          name="lastName"
-          value={profile.lastName}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="firstName">Prénom *</label>
+        <label htmlFor="firstName">Prénom</label>
         <input
           id="firstName"
           type="text"
-          name="firstName"
-          value={profile.firstName}
+          name="firstname"
+          value={profile.firstname}
           onChange={handleChange}
           required
         />
 
-        <label htmlFor="phoneNumber">Numéro de téléphone *</label>
+        <label htmlFor="lastName">Nom</label>
+        <input
+          id="lastName"
+          type="text"
+          name="surname"
+          value={profile.surname}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value={profile.email}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="phoneNumber">Numéro de téléphone</label>
         <input
           id="phoneNumber"
           type="tel"
-          name="phoneNumber"
-          value={profile.phoneNumber}
+          name="phone"
+          value={profile.phone}
           onChange={handleChange}
           required
         />
 
-        {/* Assurez-vous que les champs d'adresse utilisent profile.address pour leurs valeurs */}
-        <label htmlFor="country">Pays</label>
-        <select
-          id="country"
-          name="country"
-          value={profile.address.country}
-          onChange={handleChange}
-        >
-          <option value="">Sélectionnez votre pays</option>
-          <option value="FR">France</option>
-        </select>
-
-        <label htmlFor="city">Ville</label>
+        <label htmlFor="address">Adresse</label>
         <input
-          id="city"
+          id="address"
           type="text"
-          name="city"
-          value={profile.address.city}
+          name="address"
+          value={profile.address}
           onChange={handleChange}
         />
 
-        <label htmlFor="streetAddress">N° de voie, Rue</label>
+        <label htmlFor="sponsorCode">Code de parrainage</label>
         <input
-          id="streetAddress"
+          id="sponsorCode"
           type="text"
-          name="streetAddress"
-          value={profile.address.streetAddress}
+          name="sponsorCode"
+          value={profile.sponsorCode}
           onChange={handleChange}
         />
 
-        <label htmlFor="buildingType">Type de bâtiment</label>
+        <label htmlFor="userSponsorCode">Code de parrain</label>
         <input
-          id="buildingType"
+          id="userSponsorCode"
           type="text"
-          name="buildingType"
-          value={profile.address.buildingType}
+          name="userSponsorCode"
+          value={profile.userSponsorCode}
           onChange={handleChange}
-        />
-
-        <label htmlFor="deliveryInstructions">Instructions pour le livreur</label>
-        <textarea
-          id="deliveryInstructions"
-          name="deliveryInstructions"
-          value={profile.address.deliveryInstructions}
-          onChange={handleChange}
-          rows="4"
         />
 
         <button type="submit" className="update-profile-btn">Mettre à jour</button>
