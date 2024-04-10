@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './SignUpPage.css';
 
 const SignUpPage = () => {
@@ -14,28 +15,48 @@ const SignUpPage = () => {
   const [restaurantType, setRestaurantType] = useState('');
   const [floorSuite, setFloorSuite] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle the sign-up logic here
-    console.log('Signing up with:', role, email, phoneNumber, referralCode, lastName, firstName, password);
 
-    // Reset form fields
-    setRole('');
-    setEmail('');
-    setPhoneNumber('');
-    setReferralCode('');
-    setLastName('');
-    setFirstName('');
-    setPassword('');
-    setAddress('');
-    setEstablishmentName('');
-    setRestaurantType('');
-    setFloorSuite('');
+    const userData = {
+      type: role,
+      email: email,
+      phone: phoneNumber,
+      sponsorCode: referralCode,
+      surname: lastName,
+      firstname: firstName,
+      password: password,
+      address: address,
+      restaurantName: establishmentName,
+      restaurantType: restaurantType,
+      restaurantAddress: address,
+      restaurantPhone: phoneNumber,
+      floorSuite: floorSuite
+    };
+
+    try {
+      const response = await axios.post('http://localhost/1.0/accounts/register', userData);
+      console.log('Response from server:', response.data);
+
+      setRole('');
+      setEmail('');
+      setPhoneNumber('');
+      setReferralCode('');
+      setLastName('');
+      setFirstName('');
+      setPassword('');
+      setAddress('');
+      setEstablishmentName('');
+      setRestaurantType('');
+      setFloorSuite('');
+    } catch (error) {
+      console.error('Error while signing up:', error);
+    }
   };
 
   const renderFieldsBasedOnRole = () => {
     switch (role) {
-      case 'Client':
+      case 'user':
         return (
           <>
             <label htmlFor="address">Adresse de livraison *</label>
@@ -101,7 +122,7 @@ const SignUpPage = () => {
           required
         >
           <option value="">Choisissez un rôle</option>
-          <option value="Client">Client</option>
+          <option value="user">Client</option>
           <option value="Restaurateur">Restaurateur</option>
           <option value="Livreur">Livreur</option>
           <option value="Developpeur">Developpeur</option>
