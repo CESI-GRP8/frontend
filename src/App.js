@@ -26,6 +26,9 @@ import { CartProvider } from './context/CartContext';
 import R_Menu from './components/pages/R_Menu/R_Menu';
 import L_DeliveryAvailable from './components/pages/L_DeliveryAvailable/L_DeliveryAvailable';
 import L_Wallet from './components/pages/L_Wallet/L_Wallet';
+import { DishesProvider } from './context/DishesContext'; // Ajustez le chemin selon votre structure
+import { PaymentProvider } from './context/PaymentContext';
+import { UserProfileProvider } from './context/UserProfileContext';
 
 
 
@@ -75,9 +78,15 @@ const Layout = () => {
 const App = () => {
   return (
     <Router>
-      <CartProvider> {/* Enveloppez Layout avec CartProvider */}
-        <Layout />
-      </CartProvider>
+      <UserProfileProvider>
+      <PaymentProvider>
+      <DishesProvider> {/* Enveloppez CartProvider et Layout avec DishesProvider */}
+        <CartProvider>
+          <Layout />
+        </CartProvider>
+      </DishesProvider>
+      </PaymentProvider>
+      </UserProfileProvider>
     </Router>
   );
 };

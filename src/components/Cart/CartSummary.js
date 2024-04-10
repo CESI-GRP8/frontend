@@ -1,26 +1,46 @@
 import React from 'react';
-import './CartSummary.css'; // Vous devriez créer ce fichier CSS pour styler le composant
+import { useNavigate } from 'react-router-dom'; // Importez useNavigate
+import './CartSummary.css';
 
 const CartSummary = ({ subtotal, taxes, shipping, total }) => {
+  const navigate = useNavigate(); // Initialisation de useNavigate
+
+  const handleCheckout = () => {
+    // Imprimer les valeurs juste avant de naviguer
+    console.log({ subtotal, taxes, shipping, total });
+
+    // Naviguer vers la page de paiement avec les informations sur le prix
+    navigate('/payment', {
+      state: { subtotal, taxes, shipping, total }
+    });
+};
+
+
+  // Fonction pour arrondir les valeurs à deux décimales
+  const formatPrice = (price) => {
+    return price.toFixed(2);
+  };
+
   return (
     <div className="cart-summary">
       <div className="cart-summary-item">
         <span>Sous-total</span>
-        <span>{subtotal}€</span>
+        <span>{formatPrice(subtotal)}€</span>
       </div>
       <div className="cart-summary-item">
         <span>Taxes et Frais</span>
-        <span>{taxes}€</span>
+        <span>{formatPrice(taxes)}€</span>
       </div>
       <div className="cart-summary-item">
         <span>Livraison</span>
-        <span>{shipping}€</span>
+        <span>{formatPrice(shipping)}€</span>
       </div>
       <div className="cart-summary-total">
         <span>Total</span>
-        <span>{total}€</span>
+        <span>{formatPrice(total)}€</span>
       </div>
-      <a href="/payment"><button className="cart-summary-checkout">COMMANDER</button></a>
+      {/* Utiliser la fonction handleCheckout au lieu de href */}
+      <button className="cart-summary-checkout" onClick={handleCheckout}>COMMANDER</button>
     </div>
   );
 };

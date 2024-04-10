@@ -1,17 +1,26 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './PaymentPage.css'; // Assurez-vous que le chemin correspond à l'emplacement de votre fichier CSS
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useCart } from '../../../context/CartContext';
+import { usePayment } from '../../../context/PaymentContext';
+import { useUserProfile } from '../../../context/UserProfileContext'; // Importez le hook useUserProfile
+import './PaymentPage.css';
 
 const PaymentPage = () => {
-  const navigate = useNavigate(); // Initialisez la fonction navigate
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { cartState } = useCart();
+  const { cartes, carteParDefaut } = usePayment(); // Utilisez usePayment ici
+  const { profile } = useUserProfile(); // Utilisez useUserProfile pour accéder aux données du profil
 
-  // Logique de paiement à intégrer ici
+  const total = location.state ? location.state.total : 0;
+
   const handleConfirmPayment = () => {
-    // Implémentez la logique de confirmation de paiement
     console.log('Paiement confirmé');
-    // Naviguez vers la page /success
     navigate('/success');
   };
+
+  // Récupération de l'adresse depuis le profil de l'utilisateur pour l'affichage
+  const deliveryAddress = `${profile.address.streetAddress}, ${profile.address.city}, ${profile.address.country}`;
 
   return (
     <div className="payment-page">
@@ -19,15 +28,16 @@ const PaymentPage = () => {
         <h2>Paiement</h2>
         <div className="payment-detail">
           <h3>Livrée à</h3>
-          <p>8 rue Victor Hugo, 76300, Sotteville-lès-Rouen <button>Changer</button></p>
+          <p>{deliveryAddress} <button onClick={() => navigate('/myprofile')}>Changer</button></p>
         </div>
         <div className="payment-detail">
           <h3>Moyen de paiement</h3>
-          <p>XXXX XXXX XXXX 7753 <a href="/paymentmethod"><button>Ajouter</button></a><button>Changer</button></p>
+          <p>{carteParDefaut ? `${carteParDefaut.numero} - Expire le: ${carteParDefaut.dateExpiration}` : 'Aucune carte enregistrée'}</p>
+          <button onClick={() => navigate('/paymentmethod')}>Changer</button>
         </div>
         <div className="payment-total">
           <span>Prix:</span>
-          <span>48,90€</span>
+          <span>{total.toFixed(2)}€</span>
         </div>
         <button className="confirm-payment-button" onClick={handleConfirmPayment}>
           CONFIRMER PAIEMENT
