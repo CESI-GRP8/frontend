@@ -1,0 +1,39 @@
+.l-wallet {
+    text-align: center;
+  }
+  
+  .total-text {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .total-amount-value {
+    font-size: 28px;
+  }
+  
+  .withdraw-btn {
+    background-color: #FFD700;
+    color: black;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .withdraw-btn:hover {
+    background-color: #FFD700;
+  }
+  
+  .confirm-btn {
+    background-color: #FFD700;
+    color: black;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  

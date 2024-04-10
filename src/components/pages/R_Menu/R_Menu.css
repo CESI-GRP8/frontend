@@ -1,0 +1,78 @@
+/* styles.css */
+
+/* Style pour les cases */
+input[type="file"],
+input[type="text"],
+textarea {
+  /* Ajoutez vos styles ici */
+  border: 1px solid #ccc;
+  padding: 6px; /* Réduire la taille du padding */
+  margin-bottom: 10px;
+  width: 60%; /* Reduire la largeur */
+  box-sizing: border-box; /* Garantit que la largeur inclut également le padding et la bordure */
+  display: block; /* Afficher chaque champ sur une nouvelle ligne */
+  margin: 0 auto; /* Centrer horizontalement */
+}
+
+/* Style pour les boutons */
+button[type="submit"],
+button[type="button"] {
+  /* Ajoutez vos styles ici */
+  background-color: #FFD700; /* Couleur d'arrière-plan jaune */
+  color: black; /* Couleur de la police noire */
+  border: none;
+  padding: 8px 16px; /* Réduire la taille du padding */
+  cursor: pointer;
+  display: block; /* Afficher chaque bouton sur une nouvelle ligne */
+  margin: 10px auto; /* Centrer horizontalement avec un espace de 10px en haut et en bas */
+}
+
+/* Style pour les onglets */
+.onglets button {
+  /* Ajoutez vos styles ici */
+  background-color: #FFD700; 
+  color: black; 
+  border: none;
+  padding: 8px 16px; /* Réduire la taille du padding */
+  cursor: pointer;
+  margin-left: 20px; /* Espacement entre les onglets */
+}
+
+/* Style pour l'onglet actif */
+.onglets button.active {
+  border-bottom: 2px solid #FFD700; /* Bordure jaune en bas */
+}
+
+/* Style pour le contenu du nouvel onglet */
+.nouveau-menu {
+  /* Ajoutez vos styles ici */
+  margin-left: 100px; /* Décalage vers la droite */
+}
+
+.mes-menus{
+    margin-left: 30px; /* Décalage vers la droite */
+
+}
+
+.menu-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+
+  .menu-card button {
+    background-color: #FFD700;
+    color: black;
+    margin: 0 auto; /* Centre horizontalement */
+    display: block; /* Pour centrer verticalement */
+  }
+  
+  
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Définir la largeur minimale et maximale de chaque colonne */
+    grid-gap: 20px; /* Espacement entre les cartes */
+  }
+  

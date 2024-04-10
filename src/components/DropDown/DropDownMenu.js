@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Importez useNavigate
 import './DropDownMenu.css';
 
+
 const DropdownMenu = () => {
   const navigate = useNavigate(); // Initialisez useNavigate
-
   const handleSelectOption = (selectedOption) => {
     console.log(`Option sélectionnée : ${selectedOption}`);
     // Redirige l'utilisateur vers la route sélectionnée
@@ -44,4 +44,4 @@ const DropdownMenu = () => {
   );
 };
 
-export default DropdownMenu;
+export default DropDownMenu;

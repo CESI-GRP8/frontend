@@ -1,0 +1,21 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .buttons button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .buttons button:hover {
+    opacity: 0.8;
+  }
+  
+  .order-card button {
+    background-color: #FFD700;
+    color: black;
+    margin-right: 20px; /* Ajoute une marge à droite pour séparer les boutons */
+  }
+  
