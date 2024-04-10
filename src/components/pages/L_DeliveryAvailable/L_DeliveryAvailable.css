@@ -1,0 +1,19 @@
+.delivery-available {
+    margin-left: 20px; 
+  }
+  .tabs {
+    display: flex;
+    
+    margin-bottom: 20px;
+    color: black; /* Couleur du texte par défaut */
+
+  }
+  
+  .tabs button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #FFD700; /* Couleur de fond par défaut */
+    color: black; /* Couleur du texte par défaut */
+  }

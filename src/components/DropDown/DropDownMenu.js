@@ -1,7 +1,7 @@
 import React from 'react';
 import './DropDownMenu.css';
 
-const DropdownMenu = () => {
+const DropDownMenu = () => {
   const handleSelectOption = (selectedOption) => {
     // Implémentez ici la logique pour gérer le choix de l'option sélectionnée
     console.log(`Option sélectionnée : ${selectedOption}`);
@@ -21,4 +21,4 @@ const DropdownMenu = () => {
   );
 };
 
-export default DropdownMenu;
+export default DropDownMenu;

@@ -23,6 +23,9 @@ import OrderDeniedPage from './components/pages/OrderDeniedPage/OrderDeniedPage'
 import NotificationsPage from './components/pages/Notifications/NotificationsPage';
 import R_Orders from './components/pages/R_Orders/R_OrdersPage';
 import { CartProvider } from './context/CartContext';
+import R_Menu from './components/pages/R_Menu/R_Menu';
+import L_DeliveryAvailable from './components/pages/L_DeliveryAvailable/L_DeliveryAvailable';
+import L_Wallet from './components/pages/L_Wallet/L_Wallet';
 
 
 
@@ -60,6 +63,9 @@ const Layout = () => {
         <Route path="/suivi" element={<OrderStatusPage/>}/>
         <Route path="/notifications" element={<NotificationsPage/>}/>
         <Route path="/orders_r" element={<R_Orders/>}/>
+        <Route path="/menu_r" element={<R_Menu/>}/>
+        <Route path="/delivery_available_l" element={<L_DeliveryAvailable/>}/>
+        <Route path="/wallet_l" element={<L_Wallet/>}/>
       </Routes>
     </>
   );

@@ -40,17 +40,6 @@
   background-color: #E6C200; /* Darker yellow on hover for the button */
 }
 
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.dropdown-menu select {
-  width: 200px; /* Adjust the width of the dropdown menu */
-}
-
 .user-info {
   display: flex;
   align-items: center;
