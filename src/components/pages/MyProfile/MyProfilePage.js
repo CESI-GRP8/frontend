@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './MyProfilePage.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const MyProfilePage = () => {
+  const navigate = useNavigate();
+
   const [profile, setProfile] = useState({
     _id: '',
     firstname: '',
@@ -43,12 +47,16 @@ const MyProfilePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       // Effectuer une requête PATCH à l'API pour mettre à jour les données du profil
       await axios.patch(`http://localhost/1.0/accounts/users/${profile._id}`, profile);
       console.log('Profil mis à jour avec succès :', profile);
+      navigate('/restaurant');
+
     } catch (error) {
       console.error('Error updating user profile:', error);
+
     }
   };
 
@@ -56,7 +64,7 @@ const MyProfilePage = () => {
     <div className="my-profile-page">
       <h2>Mon Profil</h2>
       <form className="profile-form" onSubmit={handleSubmit}>
-        <label htmlFor="firstName">Prénom</label>
+        <label htmlFor="firstName">Prénom*</label>
         <input
           id="firstName"
           type="text"
@@ -66,7 +74,7 @@ const MyProfilePage = () => {
           required
         />
 
-        <label htmlFor="lastName">Nom</label>
+        <label htmlFor="lastName">Nom*</label>
         <input
           id="lastName"
           type="text"
@@ -76,7 +84,7 @@ const MyProfilePage = () => {
           required
         />
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email*</label>
         <input
           id="email"
           type="email"
@@ -86,7 +94,7 @@ const MyProfilePage = () => {
           required
         />
 
-        <label htmlFor="phoneNumber">Numéro de téléphone</label>
+        <label htmlFor="phoneNumber">Numéro de téléphone*</label>
         <input
           id="phoneNumber"
           type="tel"
@@ -96,7 +104,7 @@ const MyProfilePage = () => {
           required
         />
 
-        <label htmlFor="address">Adresse</label>
+        <label htmlFor="address">Adresse*</label>
         <input
           id="address"
           type="text"

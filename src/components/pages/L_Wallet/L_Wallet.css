@@ -1,39 +1,72 @@
+/* Styles de base */
 .l-wallet {
-    text-align: center;
-  }
-  
-  .total-text {
-    font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .total-amount-value {
-    font-size: 28px;
-  }
-  
-  .withdraw-btn {
-    background-color: #FFD700;
-    color: black;
-    padding: 15px 30px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .withdraw-btn:hover {
-    background-color: #FFD700;
-  }
-  
-  .confirm-btn {
-    background-color: #FFD700;
-    color: black;
-    padding: 15px 30px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  text-align: center;
+}
 
+.total-amount-value {
+  font-size: 40px;
+}
+
+.delivery-list {
+  margin-top: 20px;
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+}
+
+.delivery-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.delivery-item p {
+  margin: 0;
+}
+
+.withdraw-btn, .confirm-btn {
+  background-color: #FFD700;
+  color: black;
+  padding: 15px 30px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.withdraw-btn:hover, .confirm-btn:hover {
+  background-color: #FFD700;
+}
+
+/* Styles pour la croix de fermeture */
+.close {
+  margin-left: 135px;
+  margin-top: -18px;
+  position: absolute;
+  font-size: 45px;
+  cursor: pointer;
+  color: red;
+}
+
+/* Media queries pour les styles responsives */
+@media only screen and (max-width: 1024px) {
+  .close {
+    margin-left: 50%;
   }
-  
+}
+
+@media only screen and (max-width: 768px) {
+  .close {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .close {
+    margin-left: 5px;
+  }
+
+  .withdraw-btn, .confirm-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+  }
+}

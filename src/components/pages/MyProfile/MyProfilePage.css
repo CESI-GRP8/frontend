@@ -43,16 +43,6 @@
     width: auto;
 }
 
-.password-reset {
-    margin-bottom: 1em;
-    text-align: center;
-}
-
-.password-reset a {
-    color: #007bff;
-    text-decoration: none;
-}
-
 .update-profile-btn {
     width: 100%;
     padding: 1em;
@@ -66,6 +56,3 @@
     margin-top: 1em;
 }
 
-.update-profile-btn:hover {
-    background-color: #E6C200;
-}

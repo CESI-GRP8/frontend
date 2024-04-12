@@ -59,7 +59,7 @@ const SignInPage = () => {
         
         <div className="password-reset">
           Vous avez oublié votre mot de passe ?
-          <a href="/reset-password">Réinitialisez-le !</a>
+          <a href="/resetpassword"> Réinitialisez-le !</a>
         </div>
         
         <button type="submit" className="continue-btn">CONTINUER</button>

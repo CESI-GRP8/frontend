@@ -36,16 +36,6 @@
     border-radius: 5px;
   }
   
-  .password-reset {
-    margin-bottom: 1em;
-    text-align: center;
-  }
-  
-  .password-reset a {
-    color: #007bff; /* Couleur primaire de Bootstrap pour la cohérence */
-    text-decoration: none;
-  }
-  
   .continue-btn {
     width: 100%;
     padding: 1em;
@@ -59,7 +49,5 @@
     margin-top: 1em; /* Ajout d'une marge en haut */
   }
   
-  .continue-btn:hover {
-    background-color: #E6C200;
-  }
+
   

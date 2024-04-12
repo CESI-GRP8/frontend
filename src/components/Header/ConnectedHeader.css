@@ -66,3 +66,8 @@
     padding: 8px 16px; /* Smaller button on mobile */
   }
 }
+
+.deconnexion button{
+  background-color: #FFD700; /* Couleur d'arrière-plan jaune */
+  color: black;
+}
