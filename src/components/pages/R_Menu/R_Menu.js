@@ -1,42 +1,52 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Importez Axios pour les requêtes HTTP
 import './R_Menu.css'; // Importez votre fichier CSS
 
 const R_Menu = () => {
+  const [mesMenus, setMesMenus] = useState([]);
   const [ongletActif, setOngletActif] = useState('nouveauMenu');
   const [file, setFile] = useState('');
   const [nomMenu, setNomMenu] = useState('');
   const [description, setDescription] = useState('');
-  const [ingredients, setIngredients] = useState([]);
+  const [crudites, setCrudites] = useState([]);
   const [sauces, setSauces] = useState([]);
   const [boissons, setBoissons] = useState([]);
-  const [mesMenus, setMesMenus] = useState([]); // État pour stocker les menus créés
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Créer un nouvel objet pour le menu
-    const newMenu = {
-      file,
-      nomMenu,
-      description,
-      ingredients,
-      sauces,
-      boissons
-    };
-    // Ajouter le nouvel objet à l'état des menus
-    setMesMenus([...mesMenus, newMenu]);
-    // Réinitialiser les champs après la soumission
-    setFile('');
-    setNomMenu('');
-    setDescription('');
-    setIngredients([]);
-    setSauces([]);
-    setBoissons([]);
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('name', nomMenu);
+      formData.append('description', description);
+      formData.append('crudites', JSON.stringify(crudites));
+      formData.append('sauces', JSON.stringify(sauces));
+      formData.append('boissons', JSON.stringify(boissons));
+      
+      const response = await axios.post('http://localhost/1.0/restaurant/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      
+      console.log('Nouveau menu créé:', response.data);
+      
+      // Réinitialiser les champs après la soumission
+      setFile('');
+      setNomMenu('');
+      setDescription('');
+      setCrudites([]);
+      setSauces([]);
+      setBoissons([]);
+    } catch (error) {
+      console.error('Erreur lors de la création du menu:', error);
+    }
   };
 
   const handleAddItem = (type) => {
     switch (type) {
-      case 'ingredient':
-        setIngredients([...ingredients, '']);
+      case 'crudite':
+        setCrudites([...crudites, '']);
         break;
       case 'sauce':
         setSauces([...sauces, '']);
@@ -51,10 +61,10 @@ const R_Menu = () => {
 
   const handleRemoveItem = (type, index) => {
     switch (type) {
-      case 'ingredient':
-        const updatedIngredients = [...ingredients];
-        updatedIngredients.splice(index, 1);
-        setIngredients(updatedIngredients);
+      case 'crudite':
+        const updatedCrudites = [...crudites];
+        updatedCrudites.splice(index, 1);
+        setCrudites(updatedCrudites);
         break;
       case 'sauce':
         const updatedSauces = [...sauces];
@@ -73,10 +83,10 @@ const R_Menu = () => {
 
   const handleInputChange = (event, type, index) => {
     switch (type) {
-      case 'ingredient':
-        const updatedIngredients = [...ingredients];
-        updatedIngredients[index] = event.target.value;
-        setIngredients(updatedIngredients);
+      case 'crudite':
+        const updatedCrudites = [...crudites];
+        updatedCrudites[index] = event.target.value;
+        setCrudites(updatedCrudites);
         break;
       case 'sauce':
         const updatedSauces = [...sauces];
@@ -122,14 +132,14 @@ const R_Menu = () => {
               <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
             </label><br />
             <div>
-              <h3>Ingrédients</h3>
-              {ingredients.map((ingredient, index) => (
+              <h3>Crudités</h3>
+              {crudites.map((crudite, index) => (
                 <div key={index}>
-                  <input type="text" value={ingredient} onChange={(e) => handleInputChange(e, 'ingredient', index)} />
-                  <button type="button" onClick={() => handleRemoveItem('ingredient', index)}>Supprimer</button>
+                  <input type="text" value={crudite} onChange={(e) => handleInputChange(e, 'crudite', index)} />
+                  <button type="button" onClick={() => handleRemoveItem('crudite', index)}>Supprimer</button>
                 </div>
               ))}
-              <button type="button" onClick={() => handleAddItem('ingredient')}>Ajouter ingrédient</button>
+              <button type="button" onClick={() => handleAddItem('crudite')}>Ajouter crudité</button>
             </div><br />
             <div>
               <h3>Sauces</h3>
@@ -157,34 +167,7 @@ const R_Menu = () => {
       )}
       {ongletActif === 'mesMenus' && (
         <div className="mes-menus">
-          <h2>Mes menus</h2>
-          <div className="menu-grid">
-            {mesMenus.map((menu, index) => (
-              <div className="menu-card" key={index}>
-                <h3>{menu.nomMenu}</h3>
-                <p>{menu.description}</p>
-                <h4>Ingrédients</h4>
-                <ul>
-                  {menu.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
-                <h4>Sauces</h4>
-                <ul>
-                  {menu.sauces.map((sauce, index) => (
-                    <li key={index}>{sauce}</li>
-                  ))}
-                </ul>
-                <h4>Boissons</h4>
-                <ul>
-                  {menu.boissons.map((boisson, index) => (
-                    <li key={index}>{boisson}</li>
-                  ))}
-                </ul>
-                <button onClick={() => handleDeleteMenu(index)}>Supprimer</button>
-              </div>
-            ))}
-          </div>
+          {/* Affichage des menus existants */}
         </div>
       )}
     </div>

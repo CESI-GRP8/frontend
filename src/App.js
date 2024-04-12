@@ -29,7 +29,8 @@ import L_Wallet from './components/pages/L_Wallet/L_Wallet';
 import { DishesProvider } from './context/DishesContext'; // Ajustez le chemin selon votre structure
 import { PaymentProvider } from './context/PaymentContext';
 import { UserProfileProvider } from './context/UserProfileContext';
-
+import R_ConnectedHeader from './components/Header/R_ConnectedHeader';
+import L_ConnectedHeader from './components/Header/L_ConnectedHeader';
 
 
 const Layout = () => {
@@ -37,14 +38,30 @@ const Layout = () => {
 
   // Un ensemble de chemins où le Header normal doit être affiché
   const publicPaths = ['/', '/signin', '/signup'];
+// Define the paths for different types of headers
 
+const rConnectedPaths = ['/orders_r', '/menu_r'];  // Paths for L_ConnectedHeader
+const lConnectedPaths = ['/wallet_l', '/delivery_available_l'];  // Paths for L_ConnectedHeader
+
+// Determine which header to show based on the current path
+const renderHeader = () => {
+  if (publicPaths.includes(location.pathname)) {
+    return <Header />;
+  } else if (rConnectedPaths.includes(location.pathname)) {
+    return <R_ConnectedHeader />;
+  } else if (lConnectedPaths.includes(location.pathname)) {
+    return <L_ConnectedHeader />;
+  }
+  else {
+    return <ConnectedHeader />;
+  }
+};
   // Vérifiez si le chemin actuel est dans la liste des chemins publics
-  const showPublicHeader = publicPaths.includes(location.pathname);
 
   return (
     <>
       {/* Affichez le Header normal sur les chemins publics sinon ConnectedHeader */}
-      {showPublicHeader ? <Header /> : <ConnectedHeader />}
+      {renderHeader()}
 
       <Routes>
         <Route path="/" element={<HeroSection />} />

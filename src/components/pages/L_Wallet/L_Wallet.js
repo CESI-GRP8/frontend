@@ -28,6 +28,9 @@ const L_Wallet = () => {
   return (
     <div className="l-wallet">
       <h1>Résumé des livraisons</h1>
+      <div className="total-amount">
+        <span className="total-amount-value">{totalAmount} €</span>
+      </div>
       <div className="delivery-list">
         {foodDeliveries.map(delivery => (
           <div key={delivery.id} className="delivery-item">
@@ -35,9 +38,6 @@ const L_Wallet = () => {
             <p>Montant : {delivery.amount} €</p>
           </div>
         ))}
-      </div>
-      <div className="total-amount">
-        <p className="total-text">Total : <span className="total-amount-value">{totalAmount} €</span></p>
       </div>
       <button className="withdraw-btn" onClick={handleWithdrawClick}>Retrait portefeuille</button>
       {showPopup && (

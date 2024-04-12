@@ -13,16 +13,13 @@
     margin-right: 10px;
   }
   
-  .search-button {
+  .search-bar button {
     padding: 10px 20px;
     background-color: #FFD700; /* Yellow to match the theme */
+    color: black ;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .search-button:hover {
-    background-color: #E6C200;
   }
   

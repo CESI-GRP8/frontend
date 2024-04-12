@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './SignUpPage.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
   const [role, setRole] = useState('');
@@ -14,6 +15,7 @@ const SignUpPage = () => {
   const [establishmentName, setEstablishmentName] = useState('');
   const [restaurantType, setRestaurantType] = useState('');
   const [floorSuite, setFloorSuite] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -49,7 +51,10 @@ const SignUpPage = () => {
       setEstablishmentName('');
       setRestaurantType('');
       setFloorSuite('');
-    } catch (error) {
+
+      navigate('/signin');
+    } 
+    catch (error) {
       console.error('Error while signing up:', error);
     }
   };
@@ -184,7 +189,7 @@ const SignUpPage = () => {
 
         {renderFieldsBasedOnRole()}
 
-        <button type="submit" className="continue-btn">CONTINUER</button>
+        <button type="submit" className="continue-btn">CONFIRMER</button>
       </form>
     </div>
   );
